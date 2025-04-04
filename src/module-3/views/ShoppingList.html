@@ -1,0 +1,11 @@
+<h3>{{ DirCtrl.title }}</h3>
+<ul>
+    <li ng-repeat="item in DirCtrl.ctrl.items">
+        sr#{{$index+1}} {{item.name}} - {{item.quantity}}
+        <button ng-click="DirCtrl.badRemove($index);">Bad Remove
+            item</button>
+        <button ng-click="DirCtrl.onRemove({index: $index});">Remove Item</button>
+    </li>
+</ul>
+<div class="error" ng-if="DirCtrl.isCookieExistsInList()">Error Message</div>
+<div ng-transclude></div>

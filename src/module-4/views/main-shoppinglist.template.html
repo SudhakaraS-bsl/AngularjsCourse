@@ -1,0 +1,40 @@
+<table>
+    <thead>
+        <th>
+            <div>
+                <a ui-sref="Home">Home</a> &lt; <span>List</span>
+                <h3>Premade List with Absolutely No Cookies in it</h3>
+            </div>
+        </th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <div>1. routing state with controller</div>
+                <div>
+                    <ul>
+                        <li ng-repeat="item in v1ctrl.items" ui-sref="mainList.itemDetails({itemid: $index})">
+                            sr#{{$index+1}} {{item.name}} - {{item.quantity}} - {{ item.description }}
+                            item</button>
+                        </li>
+                    </ul>
+                </div>
+                <div>2. rountig state with Resolve</div>
+                <div>{{ v1ctrl.newitems }}</div>
+                <div>{{ v1ctrl.thirdKey }}</div>
+                <div>
+                    <ul>
+                        <li ng-repeat="item in v1ctrl.itemsByResolve" ui-sref="mainList.itemDetails({itemid: $index})">
+                            sr#{{$index+1}} {{item.name}} - {{item.quantity}}
+                            item</button>
+                        </li>
+                    </ul>
+                </div>
+
+            </td>
+            <td class="tdclass">
+                <div><ui-view></ui-view></div>
+            </td>
+        </tr>
+    </tbody>
+</table>

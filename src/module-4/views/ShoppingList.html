@@ -1,0 +1,11 @@
+
+<h3>{{ $ctrl.title }}</h3>
+<ul>
+    <li ng-repeat="item in $ctrl.ctrl.items">
+        sr#{{$index+1}} {{item.name}} - {{item.quantity}}
+        <button ng-click="$ctrl.badRemove($index);">Bad Remove
+            item</button>
+        <button ng-click="$ctrl.onRemove({index: $index});">Remove Item</button>
+    </li>
+</ul>
+<div class="error" style="display: none;">Error Message</div>

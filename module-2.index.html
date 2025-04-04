@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Module2App">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- angular.min.js should be loaded before app.js because app.js references angular.min.js -->
+    <script src="src/module-2/js/system/angular.min.js"></script>
+    <script src="src/module-2/js/custom/customFilter.js"></script>
+    <script src="src/module-2/js/custom/MyFirstController.js"></script>
+    <script src="src/module-2/js/custom/Controller1.js"></script>
+    <script src="src/module-2/js/custom/Controller2.js"></script>
+    <script src="src/module-2/js/custom/Controller3.js"></script>
+    <script src="src/module-2/js/custom/ShoppingListService.js"></script>
+    <script src="src/module-2/js/custom/ShoppingListAddController.js"></script>
+    <script src="src/module-2/js/custom/ShoppingListShowController.js"></script>
+    <script src="src/module-2/js/custom/ShoppingListService.Factory.js"></script>
+    <script src="src/module-2/js/custom/ShoppingListFactory.js"></script>
+    <script src="src/module-2/js/custom/ShoppingListController1.js"></script>
+    <script src="src/module-2/js/custom/ShoppingListController2.js"></script>
+    <script src="src/module-2/js/custom/ShoppingListServiceProvider.js"></script>
+    <script src="src/module-2/js/custom/app.js"></script>
+    <link rel="stylesheet" href="src/module-2/css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular js course.!</title>
+</head>
+
+<body>
+    <fieldset>
+        <legend class="legend">Welcome to Angular js Module-2 course..!</legend>
+        <div ng-controller="MyFirstController">
+            <div>
+                <h1>Calculator App</h1>
+                <span>{{HelloMethod()}}</span><br>
+                Your name: <input type="text" ng-model="name" ng-keyup="DisplayNumeric();"
+                    placeholder="enter text here" /> {{name}} <br>
+                Total numeric value of person's name is: {{totalvalue}}
+            </div><br>
+
+            <div>Message is: <br>
+                Message by property : {{message}}<br>
+                Message by function : {{sayMessage()}}
+            </div><br>
+
+            <div>
+                <button ng-click="AngularjsImage()">Angular js image</button> &nbsp;<button
+                    ng-click="AngularImage()">Angular image</button> &nbsp;
+                <br><br>
+                <img ng-src="src/module-2/images/{{imagename}}.png" />
+            </div><br>
+            <hr width="100%" size="2" color="blue" noshade>
+            <div>
+                <h1>In-Built Filters</h1>
+                Upper case filter: <input type="text" placeholder="enter text here" ng-model="upperCaseFilter"
+                    ng-blur="upper();" /> {{ upperCaseFilter }} <br><br>
+                Lower case filter: <input type="text" placeholder="enter text here" ng-model="lowerCaseFilter"
+                    ng-blur="lower();" /> {{ lowerCaseFilter }} <br><br>
+                Date filter: <input type="text" placeholder="enter text here" ng-model="dateFilter" ng-blur="date();" />
+                longDate : {{ dateFilter }} <br><br>
+                Currency filter: <input type="text" placeholder="enter text here" ng-model="currencyFilter"
+                    ng-blur="currency();" /> {{ currencyFilter }} <br><br>
+                Limit To filter: <input type="text" placeholder="enter limit here" ng-model="limit"
+                    ng-blur="limitTo();" /> {{ Array }} <br><br>
+                Order by Filter :
+                <ul>
+                    <li ng-repeat="num in Array | orderBy : num">{{num}}</li>
+                </ul>
+
+                Number filter: <input type="text" placeholder="enter number here" ng-model="numberFilter"
+                    ng-blur="number();" />
+                {{ numberFilter }} <br><br>
+                Json filter: <input type="text" placeholder="enter spacing here" ng-model="spacing"
+                    ng-blur="json();" /><br>
+                {{ jsonArray }} <br>
+                {{ jsonFilter }} <br><br>
+                object filter: <input type="text" placeholder="enter search text here" ng-model="searchText" /><br>
+                <ul>
+                    <li ng-repeat="val in jsonArray | filter:searchText">{{val.name}} - {{val.Place}}</li>
+                </ul>
+            </div>
+            <hr width="100%" size="2" color="blue" noshade>
+            <div>
+                <h1>Custom Filters</h1>
+                custom filter name: <input type="text" ng-model="customFilter" placeholder="enter text here"
+                    ng-blur="custom();" /> {{customFilter}} <br>
+            </div>
+            <hr width="100%" size="2" color="blue" noshade>
+            <div>
+                <h1>Digest Cycle</h1>
+                <button ng-click="noOfWatchers();"># of watchers ({{ $$watchersCount }})</button>
+                <button ng-click="onceCounter();">Once Counter ({{ onceCounterVal }})</button>
+                <button ng-click="counter();">Increament Counter with delay ({{ counterVal }})</button>
+            </div>
+            <hr width="100%" size="2" color="blue" noshade>
+            <div>
+                <h1>1-Time Binding</h1>
+                <button ng-click="oneTimeBindingCounter();">Increament Counter ({{ ::oneTimeBinding }})</button>
+            </div>
+            <hr width="100%" size="2" color="blue" noshade>
+            <div>
+                <h1>ng-repeat & filtered ng-repeat </h1>
+                <h3>Shopping list1: <input type="text" ng-model="shoppingList1Search" /></h3>
+                <ul>
+                    <li ng-repeat="item in shoppingList1 | filter : shoppingList1Search">{{item}}</li>
+                </ul>
+                <h3>Shopping list2: <input type="text" ng-model="shoppingList2Search" /></h3>
+                <ul>
+                    <li ng-repeat="item in shoppingList2 | filter : shoppingList2Search">Buy {{item.Quantity}} of
+                        {{item.name}}</li>
+                </ul>
+                <h3>Shopping list2 with index: <input type="text" ng-model="shoppingListWithIndex2Search" /></h3>
+                <ul>
+                    <li ng-repeat="item in shoppingList2 | filter:shoppingListWithIndex2Search">{{$index+1}}. Buy
+                        {{item.Quantity}} of {{item.name}}</li>
+                </ul>
+            </div>
+            <hr width="100%" size="2" color="blue" noshade>
+            <div>
+                <h1>Prototypal inheritance</h1>
+                {{ prototypalInheritance }}
+            </div>
+            <hr width="100%" size="2" color="blue" noshade>
+            <div ng-controller="Controller1 as parent">
+                <h1>$scope inheritance</h1>
+                <span>{{parent.c1_name}}</span>
+                <div ng-controller="Controller2 as child">
+                    <span>{{child.c1_name}}</span>
+                </div>
+            </div>
+            <hr width="100%" size="2" color="blue" noshade>
+            <div>
+                <h1>Custom service</h1>
+                <div ng-controller="ShoppingListAddController as addItem">
+                    <input type="text" placeholder="item name" ng-model="addItem.itemName" />
+                    <input type="text" placeholder="item quanity" ng-model="addItem.quautity" />
+                    <button ng-click="addItem.AddItem();">Add Item</button>
+                </div>
+                <div ng-controller="ShoppingListShowController as showItem">
+                    <ul>
+                        <li ng-repeat="item in showItem.items">sr#{{$index+1}} {{item.name}} - {{item.quantity}} <button
+                                ng-click="showItem.removeItem($index);">Remove item</button></li> <br>
+
+                    </ul>
+                </div>
+            </div>
+            <hr width="100%" size="2" color="blue" noshade>
+            <div>
+                <table>
+                    <tbody>
+
+                        <tr>
+                            <td colspan="2">
+                                <h1>Custom service with .factory()</h1>
+                                <h3>1 - Using function() method</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: top;">
+                                <div ng-controller="ShoppingListController1 as ctrl1">
+                                    <h3>Shopping list1</h3>
+                                    <input type="text" placeholder="item name" ng-model="ctrl1.itemName" />
+                                    <input type="text" placeholder="item quanity" ng-model="ctrl1.quautity" />
+                                    <button ng-click="ctrl1.AddItem();">Add Item</button><br>
+                                    <ul>
+                                        <li ng-repeat="item in ctrl1.items">sr#{{$index+1}} {{item.name}} -
+                                            {{item.quantity}} <button ng-click="ctrl1.removeItem($index);">Remove
+                                                item</button></li> <br>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td style="vertical-align: top;">
+                                <div ng-controller="ShoppingListController2 as ctrl2">
+                                    <h3>Shopping list2(Max limit 3)</h3>
+                                    <input type="text" placeholder="item name" ng-model="ctrl2.itemName" />
+                                    <input type="text" placeholder="item quanity" ng-model="ctrl2.quautity" />
+                                    <button ng-click="ctrl2.AddItem();">Add Item</button><br>
+                                    <ul>
+                                        <li ng-repeat="item in ctrl2.items">sr#{{$index+1}} {{item.name}} -
+                                            {{item.quantity}} <button ng-click="ctrl2.removeItem($index);">Remove
+                                                item</button></li> <br>
+                                        <div ng-hide="!ctrl2.errorMessage" class="error">Error: {{ctrl2.errorMessage}}</div>
+                                    </ul>
+                                </div>
+
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+            </div>
+            <div>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td colspan="2">
+                                <h3>2 - Using property method</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: top;">
+                                <div ng-controller="ShoppingListController3 as ctrl3">
+                                    <h3>Shopping list1</h3>
+                                    <input type="text" placeholder="item name" ng-model="ctrl3.itemName" />
+                                    <input type="text" placeholder="item quanity" ng-model="ctrl3.quautity" />
+                                    <button ng-click="ctrl3.AddItem();">Add Item</button><br>
+                                    <ul>
+                                        <li ng-repeat="item in ctrl3.items">sr#{{$index+1}} {{item.name}} -
+                                            {{item.quantity}} <button ng-click="ctrl3.removeItem($index);">Remove
+                                                item</button></li> <br>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td style="vertical-align: top;">
+                                <div ng-controller="ShoppingListController4 as ctrl4">
+                                    <h3>Shopping list2(Max limit 3)</h3>
+                                    <input type="text" placeholder="item name" ng-model="ctrl4.itemName" />
+                                    <input type="text" placeholder="item quanity" ng-model="ctrl4.quautity" />
+                                    <button ng-click="ctrl4.AddItem();">Add Item</button><br>
+                                    <ul>
+                                        <li ng-repeat="item in ctrl4.items">sr#{{$index+1}} {{item.name}} -
+                                            {{item.quantity}} <button ng-click="ctrl4.removeItem($index);">Remove
+                                                item</button></li> <br>
+                                        <div ng-show="ctrl4.errorMessage" class="error">Error: {{ctrl4.errorMessage}}</div>
+                                    </ul>
+                                </div>
+
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+            </div>
+            <hr width="100%" size="2" color="blue" noshade>
+            <div>
+                <table>
+                    <tbody>
+
+                        <tr>
+                            <td>
+                                <h1>Custom service with .provider()</h1>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: top;">
+                                <div ng-controller="ShoppingListController6 as ctrl6">
+                                    <h3>Shopping list1</h3>
+                                    <input type="text" placeholder="item name" ng-model="ctrl6.itemName" />
+                                    <input type="text" placeholder="item quanity" ng-model="ctrl6.quautity" />
+                                    <button ng-click="ctrl6.AddItem();">Add Item</button><br>
+                                    <ul>
+                                        <li ng-repeat="item in ctrl6.items">sr#{{$index+1}} {{item.name}} -
+                                            {{item.quantity}} <button ng-click="ctrl6.removeItem($index);">Remove
+                                                item</button></li> <br>
+                                        <div ng-if="ctrl6.errorMessage" class="error">Error: {{ctrl6.errorMessage}}
+                                        </div>
+                                    </ul>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+
+
+
+
+    </fieldset>
+</body>
+
+</html>

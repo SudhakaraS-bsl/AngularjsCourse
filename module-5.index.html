@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="RegistrationApp">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="src/module-5/js/system/angular.min.js"></script>
+    <script src="src/module-5/js/custom/app.js"></script>
+    <link rel="stylesheet" href="src/module-5/css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular js course.!</title>
+</head>
+
+<body ng-controller="RegistrationController as reg">
+    <h3>Welcome to Angular js Module-5 course..!</h3>
+    <fieldset>
+        <legend class="legend">Simple form validation</legend>
+        <form name="regForm" novalidate>
+            <div>
+                <div> <input type="text" name="username" placeholder="enter username" ng-model="reg.username" required
+                        minlength="4" ng-maxlength="10"> {{ reg.username }}
+                    <span
+                        ng-if="(regForm.username.$error.required || regForm.username.$error.minlength ) && regForm.username.$touched">username
+                        must be atleast 4 characters length</span>
+                    <span ng-if="regForm.username.$touched && regForm.username.$error.maxlength"> username must not be
+                        greater than 10 characters </span>
+                </div>
+                <br>
+                <div> <input type="email" name="email" placeholder="enter email" ng-model="reg.email" required> {{
+                    reg.email }}
+                    <span ng-if="regForm.email.$touched && regForm.email.$invalid"> email address must be in
+                        valid format like email@domain</span>
+                </div> <br>
+                <div> <input type="text" name="phone" placeholder="###-###-####" ng-model="reg.phone"
+                        pattern="(\d{3})-(\d{3})-(\d{4})"> {{ reg.phone }}
+                    <span ng-if="regForm.phone.$invalid && regForm.phone.$touched"> must be valid number ###-###-####
+                    </span>
+                </div> <br>
+                <div>
+                    <input type="text" name="dummy" ng-model="reg.dummy" placeholder="dummy" required minlength="4" ng-maxlength="5"> {{ reg.dummy }}
+                    <span ng-if=" regForm.dummy.$touched && regForm.dummy.$invalid">validation message</span>
+                </div>
+                <div> <button ng-disabled="regForm.$invalid" ng-click="reg.Submit();">Submit</button> </div> <br>
+                <div> form valid ? {{ regForm.$valid }} </div>
+        </form>
+
+        <div ng-if="reg.completed" id="info">
+            <div>usename: {{ reg.username }}</div>
+            <div>email: {{ reg.email }}</div>
+            <div>Phone: {{ reg.phone }}</div>
+            <div>dummy: {{  reg.dummy }}</div>
+        </div>
+    </fieldset>
+</body>
+
+</html>

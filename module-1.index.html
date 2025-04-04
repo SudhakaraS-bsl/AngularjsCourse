@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyFirstApp">
+
+<head>
+   <meta charset="UTF-8">
+   <!-- angular.min.js should be loaded before app.js because app.js references angular.min.js -->
+   <script src="src/module-1/js/system/angular.min.js"></script>
+   <script src="src/module-1/js/custom/app.js"></script>
+   <link rel="stylesheet" href="src/module-1/css/styles.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Angular js course.!</title>
+</head>
+
+<body>
+   <fieldset>
+      <legend class="legend">Welcome to Angular js Module-1 course..!</legend>
+      <div ng-controller="MyFirstController">
+         <br>
+         <div>
+            <span>{{HelloMethod()}}</span><br>
+            Your name: <input type="text" ng-model="name" ng-keyup="DisplayNumeric();" placeholder="enter text here"
+               ng-blur="upper();" /> {{name}} <br>
+            Total numeric value of person's name is: {{totalvalue}}
+         </div><br>
+         <div>Message is: <br>
+            Message by property : {{message}}<br>
+            Message by function : {{sayMessage()}}
+         </div><br>
+         <div>
+            <button ng-click="AngularjsImage()">Angular js image</button> &nbsp;<button
+               ng-click="AngularImage()">Angular image</button> &nbsp;
+            <br><br>
+            <img ng-src="src/module-1/images/{{imagename}}.png" />
+         </div>
+      </div>
+   </fieldset>
+</body>
+
+</html>

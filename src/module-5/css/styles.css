@@ -1,0 +1,42 @@
+.legend {
+
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: blue;
+}
+.error {
+    color: red;
+}
+.loading-icon {
+    position: absolute;
+    left: calc(100% / 2);
+    top: 10px;
+  }
+  .activeTab {
+    font-weight: bold;
+  }
+  .tdclass{
+    vertical-align: top;
+  }
+
+  /* body {
+    font-size: 1.2em;
+  } */
+  input {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+  button {
+    font-size: 15px;
+  }
+  
+  .ng-touched.ng-valid {
+    border: 2px green solid;
+  }
+  
+  .ng-touched.ng-invalid {
+    border: 2px red solid;
+  }
+  
+  #info {
+    margin-top: 20px;
+  }

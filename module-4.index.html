@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Module4App">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- angular.min.js should be loaded before app.js because app.js references angular.min.js -->
+    <script src="src/module-4/js/system/jquery-3.7.1.min.js"></script>
+    <script src="src/module-4/js/system/angular.min.js"></script>
+    <script src="src/module-4/js/system/angular-ui-router.min.js"></script>
+    <script src="src/module-4/js/system/stateEvents.js" ></script>
+    <script src="src/module-4/js/custom/ShoppingListController.js"></script>
+    <script src="src/module-4/js/custom/ShoppingListService.js"></script>
+    <script src="src/module-4/js/custom/WeightLossFilterService.js"></script>
+    <script src="src/module-4/js/custom/ShoppingListController3.js"></script>
+    <script src="src/module-4/js/custom/ShoppingListController4.js"></script>
+    <script src="src/module-4/js/custom/ServiceFactory.js"></script>
+    <script src="src/module-4/js/custom/ShoppingListComponentController.js"></script>
+    <script src="src/module-4/js/custom/LoadingSpinnerComponentController.js"></script>
+    <script src="src/module-4/js/custom/ComponentObj.js"></script>
+    <script src="src/module-4/js/custom/RoutesConfig.js"></script>
+    <script src="src/module-4/js/custom/RunConfig.js"></script>
+    <script src="src/module-4/js/custom/View2Controller.js"></script>
+    <script src="src/module-4/js/custom/DirectiveController.js"></script>
+    <script src="src/module-4/js/custom/View1Controller.js"></script>
+    <script src="src/module-4/js/custom/ItemDetailController.js"></script>
+
+    <script src="src/module-4/js/custom/app.js"></script>
+    <link rel="stylesheet" href="src/module-4/css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular js course.!</title>
+</head>
+
+<body>
+    <fieldset>
+        <legend class="legend">Welcome to Angular js Module-4 course..!</legend>
+        <div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <h1>Components and component-based architecture</h1>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top;">
+
+                            <div ng-controller="ShoppingListController3 as ctrl">
+                                <input type="text" placeholder="item name" ng-model="ctrl.itemName" />
+                                <input type="text" placeholder="item quanity" ng-model="ctrl.quautity" />
+                                <button ng-click="ctrl.AddItem();">Add Item</button><br>
+                                <span>{{ ctrl.lastRemoved }}</span>
+                                <shopping-list ctrl="ctrl" title="{{ctrl.title}}" bad-remove="ctrl.removeItem"
+                                    on-remove="ctrl.removeItem(index)"></shopping-list>
+                            </div>
+
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr width="100%" size="2" color="blue" noshade>
+
+        <div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <h1>Event System</h1>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top;">
+
+                            <div ng-controller="ShoppingListController3 as ctrl">
+                                <input type="text" placeholder="item name" ng-model="ctrl.itemName" />
+                                <input type="text" placeholder="item quanity" ng-model="ctrl.quautity" />
+                                <button ng-click="ctrl.AddItem();">Add Item</button><br>
+                                <span>{{ ctrl.lastRemoved }}</span>
+                                <shopping-list ctrl="ctrl" title="{{ctrl.title}}" bad-remove="ctrl.removeItem"
+                                    on-remove="ctrl.removeItem(index)"></shopping-list>
+                            </div>
+
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr width="100%" size="2" color="blue" noshade>
+
+        <div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <h1>Modules</h1>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top;">
+
+                            <!-- <div ng-controller="ShoppingListController3 as ctrl">
+                                <input type="text" placeholder="item name" ng-model="ctrl.itemName" />
+                                <input type="text" placeholder="item quanity" ng-model="ctrl.quautity" />
+                                <button ng-click="ctrl.AddItem();">Add Item</button><br>
+                                <span>{{ ctrl.lastRemoved }}</span>
+                                <shopping-list ctrl="ctrl" title="{{ctrl.title}}" bad-remove="ctrl.removeItem"
+                                    on-remove="ctrl.removeItem(index)"></shopping-list>
+                            </div> -->
+
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr width="100%" size="2" color="blue" noshade>
+
+        <div>
+            <h1>Routing using ui-router</h1>
+            <h2>Welcome to Premade No Cookie Shopping List</h2>
+            <div>
+                <!-- <a ui-sref="view1" ui-sref-active="activeTab">View1</a>
+                <a ui-sref="view2" ui-sref-active="activeTab">View2</a> -->
+                <!-- <a ui-sref="Home" ui-sref-active="activeTab">Home</a> -->
+            </div>
+            <ui-view></ui-view>
+        </div>
+        <loading-spinner></loading-spinner>
+    </fieldset>
+</body>
+
+</html>
